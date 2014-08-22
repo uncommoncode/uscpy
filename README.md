@@ -1,7 +1,8 @@
 # About uscpy
-uscpy (pronounced Microscopy) is a collection of main scripts and a library useful for common microscopy tasks.
+uscpy (pronounced Microscopy) is a collection of command line tools and a library useful for common microscopy image processing tasks.
 
-The main scripts are located in the root directory, and the library is provided in the ```uscpy``` directory.
+The command line tools are located in the root directory, and the library is provided in the ```uscpy``` directory.
+
 
 # Dependencies
 This code has several dependencies:
@@ -37,7 +38,10 @@ Additional References:
  * <http://joernhees.de/blog/2014/02/25/scientific-python-on-mac-os-x-10-9-with-homebrew/>
  * <https://groups.google.com/forum/#!topic/pupil-discuss/wGRr7P9nvKc>
 
-# Usage
+
+# Command Line Tools
+The command line tools are located in the root directory, and are described in the following sections.
+
 ## Image Stabilization
 Given an input video, create an output mp4 video:
 
