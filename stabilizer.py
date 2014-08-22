@@ -7,11 +7,16 @@ import cv2
 
 import uscpy.sequence
 import uscpy.frame
+import uscpy.video
 
 parser = argparse.ArgumentParser(description="Perform image stabalization to a video")
 parser.add_argument("input", help="input video path")
 parser.add_argument("output", help="output video path")
+parser.add_argument("--encoder", default="rawrgb", help="output video encoder. supported formats: %s" % (uscpy.video.FORMAT_TABLE.keys()))
 args = parser.parse_args()
+
+if args.encoder not in uscpy.video.FORMAT_TABLE:
+    raise Exception("Encoding format '%s' not supported.")
 
 vc = cv2.VideoCapture(args.input)
 if not vc.isOpened():
@@ -23,7 +28,10 @@ fps = vc.get(cv2.cv.CV_CAP_PROP_FPS)
 fourcc = int(vc.get(cv2.cv.CV_CAP_PROP_FOURCC))
 print("video-input:")
 print("   width: %d\n   height: %d\n   fps: %d" % (width, height, fps))
-vw = cv2.VideoWriter(args.output, cv2.cv.FOURCC('m', 'p', '4', 'v'), fps, (width, height), True)
+print("video-output:")
+print("    format: %s" % (args.encoder))
+encoder_format = uscpy.video.FORMAT_TABLE[args.encoder]
+vw = cv2.VideoWriter(args.output, encoder_format, fps, (width, height), True)
 
 if not vw.isOpened():
     raise Exception("Error opening video output '%s'" % args.output)
