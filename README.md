@@ -38,15 +38,17 @@ Additional References:
  * <https://groups.google.com/forum/#!topic/pupil-discuss/wGRr7P9nvKc>
 
 # Usage
-## Image Stabalization
+## Image Stabilization
 Given an input video, create an output mp4 video:
 
 ```
-python stabalizer.py input-video.avi output-video.m4v
+python stabilizer.py input-video.avi output-video.m4v
 ```
 
 Further usage is described with the --help flag:
 
 ```
-python stabalizer.py --help
+python stabilizer.py --help
 ```
+
+For a 956px x 900px 115 frame video the stabilizer takes about 10 seconds to complete on a 1.7 GHz i7 MacBook Air.
